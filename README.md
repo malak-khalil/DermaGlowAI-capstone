@@ -114,14 +114,21 @@ Frontend will run at: http://localhost:3000
 
 ## 🚀 Usage
 
--Open the website in the browser.
--Browse skincare products in the shop.
--Create an account or log in.
--Use AI Skin Analysis by uploading a clear skin image.
--Use the Product Finder for personalized recommendations.
--Add products to cart and complete demo checkout.
--View your profile and order history.
--Leave a review and rating.
+Open the website in the browser.
+
+Browse skincare products in the shop.
+
+Create an account or log in.
+
+Use AI Skin Analysis by uploading a clear skin image.
+
+Use the Product Finder for personalized recommendations.
+
+Add products to cart and complete demo checkout.
+
+View your profile and order history.
+
+Leave a review and rating.
 
 ---
 
@@ -172,9 +179,13 @@ Add admin dashboard for product and review management
 The AI analysis uses a trained .keras model stored in: backend/models/DermaGlow_model.keras
 
 For best results, upload:
+
     -clear images
+
     -good lighting
+
     -visible skin area
+
     -minimal blur or filters
 
 -----
@@ -185,27 +196,43 @@ The project uses SQLite for development.
 
 Main database entities include:
 
--User
--Product
--Order
--OrderItem
--Review
+User
+
+Product
+
+Order
+
+OrderItem
+
+Review
+
 
 These support authentication, product browsing, cart checkout, order history, and customer reviews.
 
 ------
 
 ## Current Pages
+
 -Home
+
 -Shop
+
 -Product Finder
+
 -AI Skin Analysis
+
 -Reviews
+
 -User Profile
+
 -Checkout
+
 -Payment
+
 -Privacy Policy
+
 -Terms & Conditions
+
 -FAQs
 
 -------
