@@ -1,53 +1,65 @@
-# DermaGlow – AI-Powered Skincare Platform
+# DermaGlow - AI-Powered Skincare Platform
 
 An AI-driven skincare platform that analyzes user-uploaded skin images to detect concerns like acne, dark spots, or dark circles, and recommends personalized skincare products based on the results and user questionnaire responses.
 
 ---
 
-## Deployment
-
-Frontend
-* Vercel: https://vercel.com/ayushi-gajendras-projects/skinshots-frontend
-  
-Backend
-* Render: https://skinshots-backend.onrender.com
-
-## Demo
-
-![App Screenshot](Demo-.gif)
-
----
-
 ## Features
 
-📷 Image Upload & Analysis – Detects common skin concerns using a trained AI/ML model (TensorFlow/Keras).
+📷 Image Upload & AI Skin Analysis -- Upload a skin image and get a predicted primary skin concern using a trained AI/ML model (TensorFlow/Keras).
 
-🧑‍⚕️ Personalized Recommendations – Suggests products after analyzing skin + questionnaire responses.
+🧑‍⚕️ Personalized Recommendations -- Suggests products after analyzing skin + questionnaire responses.
 
-🌐 Full-Stack App – Flask backend + React (React-Bootstrap) frontend.
+🌐 Full-Stack App -- Flask backend + React (React-Bootstrap) frontend.
 
-🔒 CORS Enabled – Seamless communication between backend and frontend.
+🔒 CORS Enabled - Seamless communication between backend and frontend.
 
-🛠 Extensible – Easy to add new features like user authentication, history tracking, or product databases.
+🛍️ Skincare Shop -- Browse products by category such as cleanser, serum, moisturiser, and sunscreen.
+
+🛒 Cart and Demo Checkout -- Add products to cart, adjust quantities, and place demo orders that are saved in the database.
+
+🔒User Authentication -- Sign up, log in, log out, and manage profile details.
+
+💬 Reviews System -- Submit ratings and feedback, with reviews stored in the database.
+
+👤 Profile and Order History -- Logged-in users can update personal information and view previous orders.
+
+🌐 Static Website Pages -- Includes Privacy Policy, Terms & Conditions, FAQs, and Contact links.
 
 ---
 
 ## Project Structure
-```
-SkinShots_AI_powered_skincare_platform/
-│── backend/                # Flask backend (API + ML model)
-│   ├── app.py              # Main Flask app
-│   ├── model/              # Trained ML/TensorFlow models
-│   └── requirements.txt    # Backend dependencies
+
+```bash
+DermaGlowAI-capstone/
+│── backend/                       # Flask backend
+│   ├── app.py                     # Main Flask app
+│   ├── models.py                  # Database models
+│   ├── requirements.txt           # Backend dependencies
+│   ├── routes/                    # API routes
+│   │   ├── auth_routes.py
+│   │   ├── order_routes.py
+│   │   ├── personalised_products_routes.py
+│   │   ├── product_routes.py
+│   │   ├── review_routes.py
+│   │   └── skin_analysis_routes.py
+│   ├── models/                    # Trained ML model files
+│   │   └── DermaGlow_model.keras
+│   ├── uploads/                   # Temporary uploaded images
+│   └── instance/                  # SQLite database
 │
-│── frontend/               # React frontend
+│── frontend/                      # React frontend
+│   ├── public/
 │   ├── src/
-│   │   ├── components/     # React components
-│   │   ├── App.js          # Main app logic
-│   │   └── index.js        # Entry point
-│   └── package.json        # Frontend dependencies
+│   │   ├── components/
+│   │   ├── context/
+│   │   ├── pages/
+│   │   ├── App.jsx
+│   │   ├── App.css
+│   │   └── index.js
+│   └── package.json
 │
-│── README.md               # Project documentation
+│── README.md
 ```
 ---
 
@@ -57,8 +69,8 @@ SkinShots_AI_powered_skincare_platform/
 
 ### Clone the repo
 ```
-git clone https://github.com/ayushi-gajendra/SkinShots_AI_powered_skincare_platform.git
-cd SkinShots_AI_powered_skincare_platform/backend
+git clone https://github.com/malak-khalil/DermaGlowAI-capstone.git
+cd DermaGlowAI-capstone/backend
 ```
 
 ### Create virtual environment
@@ -82,7 +94,8 @@ Backend will run at: http://127.0.0.1:5000
 
 ## 🔹 Frontend (React + Bootstrap)
 ```
-cd ../frontend
+Open a new terminal and run:
+cd DermaGlowAI-capstone/frontend
 ```
 
 ### Install dependencies
@@ -101,25 +114,37 @@ Frontend will run at: http://localhost:3000
 
 ## 🚀 Usage
 
-Open the app in your browser.
-
-Upload a skin image to detect concerns.
-
-Answer skincare questions for better personalization.
-
-Receive AI-powered analysis + product recommendations.
-
+Open the website in the browser.
+Browse skincare products in the shop.
+Create an account or log in.
+Use AI Skin Analysis by uploading a clear skin image.
+Use the Product Finder for personalized recommendations.
+Add products to cart and complete demo checkout.
+View your profile and order history.
+Leave a review and rating.
 ---
 
 ## 🧠 Tech Stack
 
-- Frontend: React, React-Bootstrap
+### Frontend
+- React
+- React Router
+- React-Bootstrap
+- CSS
 
-- Backend: Flask, Flask-CORS
+### Backend
+- Flask
+- Flask-CORS
+- Flask-SQLAlchemy
+- SQLite
 
-- AI/ML: TensorFlow / Keras, NumPy
+### AI / Machine Learning
+- TensorFlow / Keras
+- NumPy
 
-- Database: SQLite / PostgreSQL
+### Database
+- TSQLite
+- PostgreSQL
 
 ---
 
@@ -135,6 +160,52 @@ Integrate with e-commerce APIs for live product recommendations.
 
 ---
 
-## 📜 License
+## AI Skin Analysis Notes
 
-This project is licensed under the MIT License – free to use and modify.
+The AI analysis uses a trained .keras model stored in: backend/models/DermaGlow_model.keras
+
+For best results, upload:
+    clear images
+    good lighting
+    visible skin area
+    minimal blur or filters
+
+-----
+
+##Database
+
+The project uses SQLite for development.
+
+Main database entities include:
+
+User
+Product
+Order
+OrderItem
+Review
+
+These support authentication, product browsing, cart checkout, order history, and customer reviews.
+
+------
+
+## Current Pages
+Home
+Shop
+Product Finder
+AI Skin Analysis
+Reviews
+User Profile
+Checkout
+Payment
+Privacy Policy
+Terms & Conditions
+FAQs
+
+-------
+
+#Future Improvements
+    Improve model accuracy with more training data
+    Add secure forgot-password by email
+    Add real payment gateway integration
+    Save AI analysis history per user
+    Add admin dashboard for product and review management   
