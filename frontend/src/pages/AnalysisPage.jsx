@@ -101,7 +101,7 @@ export default function AnalysisPage() {
                       Analysing...
                     </>
                   ) : (
-                    "Analyse Image"
+                    "Analyze Image"
                   )}
                 </Button>
               </div>
