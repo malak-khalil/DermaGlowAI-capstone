@@ -16,7 +16,7 @@ MODEL_PATH = os.path.join(BACKEND_DIR, "models", "DermaGlow_model.keras")
 
 # IMPORTANT:
 # Set this to True only if your training used rescale=1./255
-TRAIN_USED_RESCALE_255 = True
+TRAIN_USED_RESCALE_255 = False
 
 # Confidence threshold for returning "uncertain"
 CONFIDENCE_THRESHOLD = 0.60
