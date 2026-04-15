@@ -50,3 +50,4 @@ __pycache__/
 instance/
 *.sqlite3
 
+!backend/models/DermaGlow_model.keras
