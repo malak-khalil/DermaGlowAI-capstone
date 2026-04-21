@@ -34,8 +34,9 @@ function App() {
       <AppNavbar />
 
       {/* ------------ Define Routes -------------- */}
-      <main className="main-content">
-        <AnimatePresence mode="wait">
+      <AnimatePresence mode="wait">
+        <main className="main-content">
+        
           <Routes location={location} key={location.pathname}>
             {/* ------------ Home Page -------------- */}
             <Route
@@ -183,8 +184,9 @@ function App() {
 			  }
 			/>
 			</Routes>
-        </AnimatePresence>
-      </main>
+        </main>
+      </AnimatePresence>
+      
 
       {/* ----------- Footer ------------ */}
       <AppFooter />
