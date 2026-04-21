@@ -72,7 +72,7 @@ export default function PaymentPage() {
     setSubmitting(true);
 
     try {
-      const res = await fetch("http://localhost:5000/api/orders/checkout", {
+      const res = await fetch("/api/orders/checkout", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

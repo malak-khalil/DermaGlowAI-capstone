@@ -44,7 +44,7 @@ export default function UserProfilePage() {
 
   const fetchOrders = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/orders/my-orders", {
+      const res = await fetch("/api/orders/my-orders", {
         credentials: "include"
       });
 
@@ -69,7 +69,7 @@ export default function UserProfilePage() {
 
   const handleSave = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/auth/me", {
+      const res = await fetch("/api/auth/me", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         credentials: "include",

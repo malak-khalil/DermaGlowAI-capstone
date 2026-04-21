@@ -18,7 +18,7 @@ export default function ReviewsPage() {
 
   const fetchReviews = async () => {
     try {
-      const res = await fetch("http://127.0.0.1:5000/api/reviews/");
+      const res = await fetch("/api/reviews/");
       const data = await res.json();
       setReviews(data);
     } catch (error) {
@@ -38,7 +38,7 @@ export default function ReviewsPage() {
     setSubmitting(true);
 
     try {
-      const res = await fetch("http://127.0.0.1:5000/api/reviews/", {
+      const res = await fetch("/api/reviews/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

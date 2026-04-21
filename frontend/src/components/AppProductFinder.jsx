@@ -99,7 +99,7 @@ export default function AppProductFinder() {
     setError("");
 
     try {
-      const response = await fetch("http://localhost:5000/api/personalised-products/", {
+      const response = await fetch("/api/personalised-products/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

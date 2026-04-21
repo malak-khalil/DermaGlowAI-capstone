@@ -36,7 +36,7 @@ export default function AnalysisPage() {
       const formData = new FormData();
       formData.append("image", selectedFile);
 
-      const response = await fetch("http://127.0.0.1:5000/api/skin-analysis/", {
+      const response = await fetch("/api/skin-analysis/", {
         method: "POST",
         body: formData
       });

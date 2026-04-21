@@ -1,37 +1,42 @@
-import {Container, Row, Col, Image, Button } from "react-bootstrap";
-import {useNavigate} from "react-router-dom";
+import { Container, Row, Col, Image } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
+export default function AppAIAnalysis() {
+  const navigate = useNavigate();
 
-export default function AppAIAnalysis(){
+  return (
+    <section className="home-ai-section">
+      <Container>
+        <Row className="home-ai-row align-items-center g-4">
+          <Col lg={6} className="ai-analysis-image">
+            <Image
+              src="images/ai-skin.png"
+              rounded
+              fluid
+              className="home-ai-image"
+            />
+          </Col>
 
-    const navigate = useNavigate();
+          <Col lg={6} className="home-ai-content-col">
+            <div className="home-ai-content">
+              <Image
+                src="images/AI-Analysis.png"
+                rounded
+                fluid
+                className="home-ai-text-image"
+              />
 
-    return(
-        <div>
-            <Container>
-                <Row>
-                    <Col className= "ai-analysis-image">
-                        <div>
-                            <Image src="images/ai-skin.png" rounded fluid/> 
-                        </div>
-                    </Col>
-                    
-                    <Col  className="ai-analysis">
-                        <div>
-                            <Image src="images/AI-Analysis.png" rounded fluid/>
-                            <Button 
-                                variant="outline-dark" 
-                                className= "buttons" 
-                                size="lg" 
-                                onClick = {() => navigate("/ai-analysis")}
-                            >
-                                Try Now
-                            </Button>
-                        </div>
-                    </Col>
-                
-                </Row>
-            </Container>
-        </div>
-    )
+              <button
+                type="button"
+                className="home-ai-cta"
+                onClick={() => navigate("/ai-analysis")}
+              >
+                Try Now
+              </button>
+            </div>
+          </Col>
+        </Row>
+      </Container>
+    </section>
+  );
 }

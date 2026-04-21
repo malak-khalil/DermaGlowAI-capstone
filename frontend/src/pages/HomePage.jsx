@@ -1,34 +1,46 @@
-import AppAIAnalysis from "../components/AppAIAnalysis"
-import AppProductFinder from "../components/AppProductFinder"
-import AppShop from "../components/AppShop"
-import AppWhyUs from "../components/WhyUs"
-import AppSkincareBasics from "../components/SkincareBasics"
-import GoToTop from '../components/GoToTop';
+import AppAIAnalysis from "../components/AppAIAnalysis";
+import AppProductFinder from "../components/AppProductFinder";
+import AppShop from "../components/AppShop";
+import AppWhyUs from "../components/WhyUs";
+import AppSkincareBasics from "../components/SkincareBasics";
+import GoToTop from "../components/GoToTop";
 import ProductFinderPreview from "../components/ProductFinderPreview";
+import RevealOnScroll from "../components/RevealOnScroll";
 
-export default function HomePage(){
-    return(
-        <main className="page-with-fixed-navbar">
-        <>
-            {/* ------- AI Section ---------- */}
-                <AppAIAnalysis />
+export default function HomePage() {
+  return (
+    <main className="page-with-fixed-navbar">
+      <RevealOnScroll>
+        <section>
+          <AppAIAnalysis />
+        </section>
+      </RevealOnScroll>
 
-            {/* ------- Shop Section -------- */}	
-                <AppShop />
+      <RevealOnScroll delay={100}>
+        <section>
+          <AppShop />
+        </section>
+      </RevealOnScroll>
 
-            {/* --- Product Finder Section --- */}						
-               <ProductFinderPreview />
+      <RevealOnScroll delay={200}>
+        <section>
+          <ProductFinderPreview />
+        </section>
+      </RevealOnScroll>
 
-            {/* ------- Blog Section -------- */}						
-                <AppSkincareBasics />
+      <RevealOnScroll delay={300}>
+        <section>
+          <AppSkincareBasics />
+        </section>
+      </RevealOnScroll>
 
-            {/* -------- Why Us Section -------*/}						
-                <AppWhyUs />
+      <RevealOnScroll delay={400}>
+        <section>
+          <AppWhyUs />
+        </section>
+      </RevealOnScroll>
 
-
-                <GoToTop />	
-        </>
-        </main>
-    )
+      <GoToTop />
+    </main>
+  );
 }
-

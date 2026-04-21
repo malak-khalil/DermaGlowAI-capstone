@@ -1,5 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "../App.css";
+import RevealOnScroll from "../components/RevealOnScroll";
 
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import {
@@ -39,7 +40,7 @@ export default function ShopPage() {
 
   const fetchProducts = async () => {
     try {
-      const res = await fetch("http://127.0.0.1:5000/api/products/");
+      const res = await fetch("/api/products/");
       if (!res.ok) throw new Error(`Server ${res.status}`);
       const data = await res.json();
       setProducts(Array.isArray(data) ? data : []);
@@ -60,11 +61,10 @@ export default function ShopPage() {
     }
   }, [products]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const handleCategoryClick = (category) => {
-    setActiveCategory(category);
-    navigate(`/shop/${category.toLowerCase()}`);
-  };
-
+const handleCategoryClick = (category) => {
+  setActiveCategory(category);
+  window.history.replaceState({}, "", `/shop/${category.toLowerCase()}`);
+};
   const { user } = useAuth();
   const location = useLocation();
 
@@ -85,18 +85,77 @@ export default function ShopPage() {
     <>
       <main className="page-with-fixed-navbar">
         <Container>
-          <Navbar className="shop-page-navbar">
-            {categories.map((category) => (
-              <Button
-                key={category}
-                className="shop-page-navbar-buttons"
-                active={activeCategory === category}
-                onClick={() => handleCategoryClick(category)}
-              >
-                {category}
-              </Button>
-            ))}
-          </Navbar>
+<RevealOnScroll>
+  <Navbar className="shop-page-navbar">
+    {categories.map((category) => (
+      <Button
+        key={category}
+        className="shop-page-navbar-buttons"
+        active={activeCategory === category}
+        onClick={() => handleCategoryClick(category)}
+      >
+        {category}
+      </Button>
+    ))}
+  </Navbar>
+</RevealOnScroll>
+
+<RevealOnScroll delay={120}>
+  <div>
+    <Row className="cards-row">
+      {filteredProducts.map((product) => (
+        <Col key={product.id} xs={12} sm={6} md={4} lg={4} xl={3}>
+          <Card
+            className="shop-page-cards"
+            onClick={() => setSelectedProduct(product)}
+            style={{ cursor: "pointer" }}
+          >
+            <Card.Body>
+              <div className="product-image-wrapper">
+                <Card.Img
+                  src={product.image}
+                  alt={product.name}
+                  className="product-image"
+                />
+              </div>
+
+              <Card.Subtitle>{product.name}</Card.Subtitle>
+              <Card.Title>${Number(product.price).toFixed(2)}</Card.Title>
+
+              {getProductQuantity(product.id) === 0 ? (
+                <Button
+                  className="shop-page-buttons"
+                  size="lg"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleProtectedAddToCart(product);
+                  }}
+                >
+                  Add to Cart
+                </Button>
+              ) : (
+                <div
+                  className="quantity-controls"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <Button className="qty-btn" onClick={() => decreaseQuantity(product.id)}>
+                    -
+                  </Button>
+
+                  <span className="qty-number">{getProductQuantity(product.id)}</span>
+
+                  <Button className="qty-btn" onClick={() => increaseQuantity(product)}>
+                    +
+                  </Button>
+                </div>
+              )}
+            </Card.Body>
+          </Card>
+        </Col>
+      ))}
+    </Row>
+  </div>
+</RevealOnScroll>
 
           <div>
             <Row className="cards-row">
