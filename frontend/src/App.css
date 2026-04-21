@@ -1215,18 +1215,6 @@ background-color: #b58a9b;
   text-align: center;
 }
 
-.site-navbar-fixed {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1050;
-}
-
-.page-with-fixed-navbar {
-  padding-top: 220px;
-}
-
 .payment-page {
   padding-bottom: 4rem;
 }
@@ -1510,4 +1498,428 @@ body {
 
 .analysis-button:hover {
   background-color: #a07889 !important;
+}
+
+/*responsiveness*/
+
+html, body, #root {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+img, video, canvas, svg {
+  max-width: 100%;
+  height: auto;
+}
+
+.page-with-fixed-navbar {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  padding-top: 0;
+}
+
+.site-navbar-fixed {
+  position: sticky;
+  top: 0;
+  z-index: 1050;
+}
+
+.third-navbar {
+  margin-bottom: 0.75rem;
+}
+
+.second-navbar,
+.third-navbar,
+.footer-navbar {
+  width: 100%;
+}
+
+.second-navbar .container,
+.third-navbar .container-fluid {
+  max-width: 100%;
+}
+
+.brand-logo {
+  width: min(400px, 45vw);
+  height: auto;
+}
+
+.user-icon,
+.cart-icon img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.icon-nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+
+.third-navbar-container {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.third-navbar-toggle {
+  margin-left: auto;
+  border: none;
+}
+
+.third-navbar-toggle:focus {
+  box-shadow: none;
+}
+
+.third-navbar-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.third-navbar-links .nav-link {
+  text-align: center;
+  white-space: normal;
+}
+
+.shop-page-navbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.shop-page-navbar-buttons {
+  white-space: normal;
+  min-width: 0;
+  width: auto;
+  max-width: 100%;
+}
+
+.shop-page-buttons {
+  max-width: none;
+  width: 100%;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.product-image-wrapper {
+  width: 100%;
+  max-width: 100%;
+}
+
+.product-image {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.selected-image {
+  width: 100%;
+  max-width: 100%;
+  margin-top: 2rem;
+}
+
+.questions,
+.shop-heading,
+.why-us,
+.analysis-result-heading {
+  word-break: break-word;
+}
+
+.buttons {
+  max-width: 100%;
+}
+
+.option-buttons {
+  max-width: 100%;
+  white-space: normal;
+}
+
+.profile-left-card,
+.profile-orders-card {
+  max-width: 100%;
+}
+
+.orders-scroll-box {
+  width: 100%;
+}
+
+.go-to-top {
+  z-index: 1050;
+}
+
+/* -------- Large tablets / small laptops -------- */
+@media (max-width: 1199.98px) {
+  .brand-logo {
+    width: min(320px, 50vw);
+  }
+
+  .third-navbar-links {
+    gap: 1.5rem;
+  }
+
+  .shop-heading {
+    font-size: 2.4rem;
+    margin-top: 5rem;
+  }
+
+  .why-us {
+    font-size: 3rem;
+  }
+
+  .questions {
+    font-size: 1.75rem;
+  }
+}
+
+/* -------- Tablets -------- */
+@media (max-width: 991.98px) {
+  .second-navbar {
+    padding: 10px 14px;
+  }
+
+  .brand-logo {
+    width: min(260px, 55vw);
+    max-width: 55vw;
+  }
+
+  .icon-nav {
+    gap: 12px;
+  }
+
+  .user-icon,
+  .cart-icon img {
+    width: 34px;
+    height: 34px;
+  }
+
+  .cart-count {
+    min-width: 16px;
+    height: 16px;
+    font-size: 0.65rem;
+    right: -2px;
+  }
+
+  .third-navbar {
+    margin-bottom: 0.75rem;
+  }
+
+  .third-navbar-collapse {
+    background: #f1e6de;
+    padding: 1rem 0 0.5rem;
+  }
+
+  .third-navbar-links {
+    width: 100%;
+    gap: 0.75rem;
+    flex-direction: column;
+  }
+
+  .third-navbar-links .nav-link {
+    width: 100%;
+    padding: 0.65rem 1rem;
+  }
+
+  .buttons {
+    position: static;
+    transform: none;
+    width: 100%;
+    margin-top: 1.25rem;
+    font-size: 1.15rem;
+  }
+
+  .shop-heading {
+    font-size: 2rem;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+  }
+
+  .why-us {
+    font-size: 2.4rem;
+  }
+
+  .questions {
+    font-size: 1.5rem;
+  }
+
+  .option-buttons {
+    font-size: 1.1rem;
+    margin: 0.75rem;
+    padding: 0.85rem 1rem;
+  }
+
+  .analysis-upload-card,
+  .analysis-info-card,
+  .analysis-result-box,
+  .profile-left-card,
+  .profile-orders-card {
+    padding: 1.5rem;
+  }
+
+  .profile-left-card,
+  .profile-orders-card {
+    height: auto !important;
+    min-height: unset !important;
+  }
+}
+
+/* -------- Phones -------- */
+@media (max-width: 767.98px) {
+  section {
+    margin-bottom: 3rem;
+    padding: 0.75rem;
+  }
+
+  .second-navbar .navbar-brand {
+    margin-left: 0;
+  }
+
+  .brand-logo {
+    width: min(220px, 62vw);
+    max-width: 62vw;
+  }
+
+  .second-navbar .container {
+    gap: 0.75rem;
+  }
+
+  .icon-nav {
+    gap: 10px;
+  }
+
+  .third-navbar {
+    margin-bottom: 0.5rem;
+  }
+
+  .shop-page-navbar-buttons {
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.8rem 1rem;
+  }
+
+  .shop-page-buttons {
+    font-size: 0.95rem;
+    padding: 0.8rem 1rem;
+  }
+
+  .shop-heading {
+    font-size: 1.7rem;
+    margin-top: 2rem;
+  }
+
+  .why-us {
+    font-size: 2rem;
+  }
+
+  .questions {
+    font-size: 1.25rem;
+    padding: 0.5rem;
+  }
+
+  .option-buttons {
+    width: 100%;
+    margin: 0.5rem 0;
+    font-size: 1rem;
+  }
+
+  .selected-image {
+    margin-top: 1rem;
+  }
+
+  .analysis-result-heading {
+    font-size: 1.5rem;
+  }
+
+  .go-to-top {
+    right: 12px;
+    bottom: 12px;
+    padding: 8px 12px;
+    font-size: 15px;
+  }
+
+  .footer-navbar .nav,
+  .footer-navbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem 1rem;
+    text-align: center;
+  }
+}
+
+/* -------- Small phones -------- */
+@media (max-width: 575.98px) {
+  .first-navbar {
+    min-height: 10px;
+  }
+
+  .second-navbar {
+    padding: 8px 10px;
+  }
+
+  .brand-logo {
+    width: min(180px, 65vw);
+    max-width: 65vw;
+  }
+
+  .user-icon,
+  .cart-icon img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .cart-count {
+    min-width: 15px;
+    height: 15px;
+    font-size: 0.6rem;
+  }
+
+  .third-navbar-links .nav-link {
+    font-size: 0.95rem;
+  }
+
+  .buttons {
+    font-size: 1rem;
+    padding: 0.8rem 1rem;
+  }
+
+  .shop-heading,
+  .why-us {
+    font-size: 1.5rem;
+  }
+
+  .questions {
+    font-size: 1.1rem;
+  }
+
+  .analysis-upload-card,
+  .analysis-info-card,
+  .analysis-result-box,
+  .profile-left-card,
+  .profile-orders-card {
+    padding: 1rem;
+    border-radius: 18px;
+  }
+
+  .product-image-wrapper {
+    height: 190px;
+    padding: 12px;
+  }
+
+  .shop-page-cards,
+  .recommendations,
+  .order-history-box {
+    border-radius: 16px;
+  }
 }

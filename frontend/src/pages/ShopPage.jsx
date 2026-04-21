@@ -89,7 +89,7 @@ export default function ShopPage() {
             {categories.map((category) => (
               <Button
                 key={category}
-                className="shop-page-navbar-buttons px-5"
+                className="shop-page-navbar-buttons"
                 active={activeCategory === category}
                 onClick={() => handleCategoryClick(category)}
               >

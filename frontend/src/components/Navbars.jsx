@@ -62,11 +62,12 @@ function AppNavbar() {
           </Container>
         </Navbar>
 
-        <Navbar expand="md" className="third-navbar">
-          <Container fluid>
-            <Navbar.Toggle aria-controls="text-navbar-nav" />
-            <Navbar.Collapse>
-              <Nav className="third-navbar-links">
+        <Navbar expand="lg" className="third-navbar">
+          <Container fluid className="third-navbar-container">
+            <Navbar.Toggle aria-controls="text-navbar-nav" className="third-navbar-toggle"/>
+            <Navbar.Collapse id="text-navbar-nav" className="third-navbar-collapse">
+         
+              <Nav className="third-navbar-links ms-auto me-auto">
                 <Nav.Link onClick={() => navigate("/")}>Home</Nav.Link>
                 <Nav.Link onClick={() => navigate("/shop")}>Shop</Nav.Link>
                 <Nav.Link onClick={() => navigate("/product-finder")}>Product Finder</Nav.Link>
