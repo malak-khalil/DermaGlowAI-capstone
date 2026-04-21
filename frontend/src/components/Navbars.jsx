@@ -1,6 +1,6 @@
 import { Navbar, Container, Nav } from "react-bootstrap";
 import React, {useState} from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import { useAuth } from "../context/AuthContext";
 
@@ -8,6 +8,20 @@ function AppNavbar() {
   const navigate = useNavigate();
   const { cart } = useCart();
   const { user } = useAuth();
+  const location = useLocation();
+
+const goTo = (path, options) => {
+  if (location.pathname === path && !options) {
+    window.scrollTo(0, 0);
+    return;
+  }
+
+  navigate(path, options);
+
+  requestAnimationFrame(() => {
+    window.scrollTo(0, 0);
+  });
+};
 
   return (
     <>
@@ -18,7 +32,7 @@ function AppNavbar() {
 
         <Navbar bg="white" data-bs-theme="light" className="second-navbar" expand="md">
           <Container>
-            <Navbar.Brand onClick={() => navigate("/")}>
+            <Navbar.Brand onClick={() => goTo("/")}>
               <img
                 alt="Brand Name"
                 src="/images/DermaGlow-Name.png"
@@ -28,7 +42,7 @@ function AppNavbar() {
 
             <Nav className="icon-nav">
               <Nav.Link
-                onClick={() => navigate(user ? "/user-profile" : "/auth")}
+                onClick={() => goTo(user ? "/user-profile" : "/auth")}
               >
                 <img
                   alt="User"
@@ -39,11 +53,14 @@ function AppNavbar() {
 
               <Nav.Link
                 onClick={() =>
-                  navigate(user ? "/checkout" : "/auth", {
+                  goTo(
+                    user ? "/checkout" : "/auth", 
+                    user ? undefined
+                    :{
                     state: {
                       from: "/checkout",
                       message: "Please log in or sign up to access your cart."
-                    }
+                    },
                   })
                 }
                 className="cart-icon"
@@ -68,11 +85,11 @@ function AppNavbar() {
             <Navbar.Collapse id="text-navbar-nav" className="third-navbar-collapse">
          
               <Nav className="third-navbar-links ms-auto me-auto">
-                <Nav.Link onClick={() => navigate("/")}>Home</Nav.Link>
-                <Nav.Link onClick={() => navigate("/shop")}>Shop</Nav.Link>
-                <Nav.Link onClick={() => navigate("/product-finder")}>Product Finder</Nav.Link>
-                <Nav.Link onClick={() => navigate("/ai-analysis")}>AI Skin Analysis</Nav.Link>
-                <Nav.Link onClick={() => navigate("/reviews")}>Reviews</Nav.Link>
+                <Nav.Link onClick={() => goTo("/")}>Home</Nav.Link>
+                <Nav.Link onClick={() => goTo("/shop")}>Shop</Nav.Link>
+                <Nav.Link onClick={() => goTo("/product-finder")}>Product Finder</Nav.Link>
+                <Nav.Link onClick={() => goTo("/ai-analysis")}>AI Skin Analysis</Nav.Link>
+                <Nav.Link onClick={() => goTo("/reviews")}>Reviews</Nav.Link>
               </Nav>
             </Navbar.Collapse>
           </Container>
