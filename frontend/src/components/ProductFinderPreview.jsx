@@ -7,6 +7,10 @@ import { useNavigate } from "react-router-dom";
 
 export default function ProductFinderPreview() {
   const navigate = useNavigate();
+  const goTo = (path) => {
+  document.activeElement?.blur?.();
+  navigate(path);
+};
 
   return (
     <section className="product-finder-preview-section">
@@ -24,7 +28,7 @@ export default function ProductFinderPreview() {
 
             <Button
               className="product-finder-preview-button"
-              onClick={() => navigate("/product-finder")}
+              onClick={() => goTo("/product-finder")}
             >
               Find My Products
             </Button>

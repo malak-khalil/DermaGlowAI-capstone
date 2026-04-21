@@ -3,7 +3,10 @@ import { useNavigate } from "react-router-dom";
 
 export default function AppAIAnalysis() {
   const navigate = useNavigate();
-
+  const goTo = (path) => {
+  document.activeElement?.blur?.();
+  navigate(path);
+};
   return (
     <section className="home-ai-section">
       <Container>
@@ -29,9 +32,7 @@ export default function AppAIAnalysis() {
               <button
                 type="button"
                 className="home-ai-cta"
-                onClick={() => navigate("/ai-analysis")}
-              >
-                Try Now
+                onClick={() => goTo("/ai-analysis")}>Try Now    
               </button>
             </div>
           </Col>

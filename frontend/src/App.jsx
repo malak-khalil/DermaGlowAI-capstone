@@ -34,7 +34,9 @@ function App() {
       <AppNavbar />
 
       {/* ------------ Define Routes -------------- */}
-      <AnimatePresence mode="wait">
+      <AnimatePresence mode="wait" onExitComplete={() => {
+        document.activeElement?.blur?.();
+        window.scrollTo({ top: 0, left: 0, behavior: "instant" });}}>
         <main className="main-content">
         
           <Routes location={location} key={location.pathname}>

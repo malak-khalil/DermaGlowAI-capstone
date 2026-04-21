@@ -5,18 +5,11 @@ export default function AppFooter() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const goTo = (path) => {
-    if (location.pathname === path) {
-      window.scrollTo(0, 0);
-      return;
-    }
-
-    navigate(path);
-
-    requestAnimationFrame(() => {
-      window.scrollTo(0, 0);
-    });
-  };
+const goTo = (path) => (e) => {
+  e.preventDefault();
+  e.currentTarget.blur();
+  navigate(path);
+};
 
   return (
     <Container fluid>
@@ -27,19 +20,15 @@ export default function AppFooter() {
           </Nav.Item>
 
           <Nav.Item>
-            <Nav.Link onClick={() => goTo("/privacy-policy")}>
-              Privacy Policy
-            </Nav.Link>
+            <Nav.Link onClick={goTo("/privacy-policy")}>Privacy Policy</Nav.Link>
           </Nav.Item>
 
           <Nav.Item>
-            <Nav.Link onClick={() => goTo("/terms-and-conditions")}>
-              Terms & Conditions
-            </Nav.Link>
+            <Nav.Link onClick={goTo("/terms-and-conditions")}>Terms & Conditions</Nav.Link>
           </Nav.Item>
 
           <Nav.Item>
-            <Nav.Link onClick={() => goTo("/faqs")}>FAQs</Nav.Link>
+            <Nav.Link onClick={goTo("/faqs")}>FAQs</Nav.Link>
           </Nav.Item>
 
           <Nav.Link

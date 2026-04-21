@@ -12,6 +12,10 @@ var products = [
 export default function AppShop(){
 
 	const navigate = useNavigate();
+	const goTo = (path) => {
+  	document.activeElement?.blur?.();
+  navigate(path);
+};
 
     return(
         <section>
@@ -28,9 +32,7 @@ export default function AppShop(){
                                         <Button 
 											className="shop-buttons" 
 											variant="outline-dark"
-											onClick = { ()=> navigate(`/shop/${product.name.toLowerCase()}`) }
-										>
-											Shop Now
+											onClick={() => goTo(`/shop/${product.name.toLowerCase()}`)}>Shop Now
 										</Button>
                                     </Card.Body>
                                 </div>
