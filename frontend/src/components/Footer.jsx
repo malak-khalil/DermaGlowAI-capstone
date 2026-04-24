@@ -16,7 +16,7 @@ const goTo = (path) => (e) => {
       <div>
         <Nav className="footer-text">
           <Nav.Item>
-            <Nav.Link href="mailto:aidermaglow@gmail.com">Contact</Nav.Link>
+            <Nav.Link href="mailto:aidermaglow@gmail.com">Contact Us</Nav.Link>
           </Nav.Item>
 
           <Nav.Item>
