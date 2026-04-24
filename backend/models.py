@@ -17,7 +17,7 @@ class Product(db.Model):
     skin_concern = db.Column(db.String(20))
     name = db.Column(db.String(120))
     description = db.Column(db.Text)
-    price = db.Column(db.Integer)
+    price = db.Column(db.Float)
     image = db.Column(db.String(255))
 
     # Relationship: one product can be in many order items (1-*)
@@ -49,7 +49,7 @@ class Order(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
-    total = db.Column(db.Integer)
+    total = db.Column(db.Float)
     created_at = db.Column(db.DateTime, default=lambda: datetime.now(timezone.utc))
     status = db.Column(db.String(20), default="Pending")
     payment_method = db.Column(db.String(50))
