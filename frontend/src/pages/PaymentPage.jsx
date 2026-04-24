@@ -344,9 +344,7 @@ export default function PaymentPage() {
             <Card className="payment-card">
               <Card.Body className="p-4">
                 <h2 className="payment-title">Secure Payment</h2>
-                <p className="payment-subtitle">
-                  Demo validation only. No real money is charged.
-                </p>
+            
 
                 {message && <Alert variant="success">{message}</Alert>}
                 {serverError && <Alert variant="danger">{serverError}</Alert>}
