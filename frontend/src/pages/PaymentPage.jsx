@@ -377,7 +377,7 @@ export default function PaymentPage() {
                       onChange={handleChange}
                       onBlur={handleBlur}
                       isInvalid={!!(touched.cardNumber && errors.cardNumber)}
-                      placeholder="1234 5678 9012 3456"
+                      placeholder="Enter Card Number"
                       inputMode="numeric"
                     />
                     <Form.Control.Feedback type="invalid">
