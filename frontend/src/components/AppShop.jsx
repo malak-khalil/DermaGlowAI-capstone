@@ -24,8 +24,7 @@ export default function AppShop(){
 				<Row>
 					{products.map(product =>(	
 						<Col key={product.id}>
-							<Card>
-                                <div>
+                
                                     <Card.Body className="shop-products text-center">
                                         <Card.Title>{product.name}</Card.Title>
                                         <Card.Img src={product.image}/>
@@ -35,8 +34,7 @@ export default function AppShop(){
 											onClick={() => goTo(`/shop/${product.name.toLowerCase()}`)}>Shop Now
 										</Button>
                                     </Card.Body>
-                                </div>
-							</Card>
+						
 						</Col>
 					))}
 				</Row>

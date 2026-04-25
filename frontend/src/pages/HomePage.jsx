@@ -13,7 +13,7 @@ export default function HomePage() {
       <section className="home-section home-hero-section">
         <AppAIAnalysis />
       </section>
-
+      <div style={{ height: "100px" }}></div>
       <section className="home-section home-shop-preview-section">
         <AppShop />
       </section>
