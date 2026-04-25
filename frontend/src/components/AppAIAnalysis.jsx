@@ -31,7 +31,7 @@ export default function AppAIAnalysis() {
 
               <button
                 type="button"
-                className="home-ai-cta"
+                className="home-ai-cta app-btn"
                 onClick={() => goTo("/ai-analysis")}>Try Now    
               </button>
             </div>

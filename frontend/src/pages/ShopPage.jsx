@@ -156,48 +156,6 @@ const handleCategoryClick = (category) => {
     </Row>
   </div>
 </RevealOnScroll>
-
-          <div>
-            <Row className="cards-row">
-              {filteredProducts.map((product) => (
-                <Col key={product.id} xs={12} sm={6} md={4} lg={4} xl={3}>
-                  <Card className="shop-page-cards" onClick={() => setSelectedProduct(product)} style={{ cursor: "pointer" }}>
-                    <Card.Body>
-                      <div className="product-image-wrapper">
-                        <Card.Img
-                          src={product.image}
-                          alt={product.name}
-                          className="product-image"
-                        />
-                      </div>
-
-                      <Card.Subtitle>{product.name}</Card.Subtitle>
-                      <Card.Title>${Number(product.price).toFixed(2)}</Card.Title>
-                    {getProductQuantity(product.id) === 0 ? (
-                      <Button
-                        className="shop-page-buttons"
-                        size="lg"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          handleProtectedAddToCart(product);
-                        }}
-                      >
-                        Add to Cart
-                      </Button>
-                      ) : (
-                        <div className="quantity-controls" onClick={(e) => e.stopPropagation()}>
-                        <Button className="qty-btn" onClick={() => decreaseQuantity(product.id)}>-</Button>
-
-                        <span className="qty-number"> {getProductQuantity(product.id)}</span>
-
-                        <Button className="qty-btn" onClick={() => increaseQuantity(product)}> + </Button>  </div>
-                    )}
-                    </Card.Body>
-                  </Card>
-                </Col>
-              ))}
-            </Row>
-          </div>
         </Container>
               <Modal
   show={!!selectedProduct}

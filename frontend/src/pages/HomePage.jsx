@@ -9,36 +9,26 @@ import RevealOnScroll from "../components/RevealOnScroll";
 
 export default function HomePage() {
   return (
-    <main className="page-with-fixed-navbar">
-      <RevealOnScroll>
-        <section>
-          <AppAIAnalysis />
-        </section>
-      </RevealOnScroll>
+    <main className="page-with-fixed-navbar homepage">
+      <section className="home-section home-hero-section">
+        <AppAIAnalysis />
+      </section>
 
-      <RevealOnScroll delay={100}>
-        <section>
-          <AppShop />
-        </section>
-      </RevealOnScroll>
+      <section className="home-section home-shop-preview-section">
+        <AppShop />
+      </section>
 
-      <RevealOnScroll delay={200}>
-        <section>
-          <ProductFinderPreview />
-        </section>
-      </RevealOnScroll>
+      <section className="home-section home-finder-preview-section">
+        <ProductFinderPreview />
+      </section>
 
-      <RevealOnScroll delay={300}>
-        <section>
-          <AppSkincareBasics />
-        </section>
-      </RevealOnScroll>
+      <section className="home-section home-basics-section">
+        <AppSkincareBasics />
+      </section>
 
-      <RevealOnScroll delay={400}>
-        <section>
-          <AppWhyUs />
-        </section>
-      </RevealOnScroll>
+      <section className="home-section home-whyus-section">
+        <AppWhyUs />
+      </section>
 
       <GoToTop />
     </main>

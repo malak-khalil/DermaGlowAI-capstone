@@ -5,7 +5,7 @@ import {CartProvider} from "./context/CartContext"
 import './index.css';
 import App from './App';
 import { AuthProvider } from "./context/AuthContext";
-
+import "bootstrap-icons/font/bootstrap-icons.css";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
