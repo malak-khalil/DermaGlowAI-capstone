@@ -128,6 +128,8 @@ def get_personalised_products():
     gender = normalize_text(data.get("gender"))
     age_answer = data.get("age")
     primary_concern = normalize_text(data.get("skinConcern"))
+    if primary_concern == "normal":
+        primary_concern = "normal"
     skin_type = normalize_text(data.get("skinType"))
     sunlight_exposure = normalize_text(data.get("sunExposure"))
     makeup = normalize_text(data.get("makeup"))

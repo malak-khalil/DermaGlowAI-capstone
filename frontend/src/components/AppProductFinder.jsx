@@ -27,8 +27,14 @@ export default function AppProductFinder() {
     {
       key: "skinConcern",
       question: "What is your primary Skin Concern?",
-      options: ["Acne", "Blackheads", "Dark Spots", "Pores", "Wrinkles",{ label: "No specific concerns", value: "normal" }]
-    },
+      options: [
+  { label: "Acne", value: "acne" },
+  { label: "Blackheads", value: "blackheads" },
+  { label: "Dark Spots", value: "dark spots" },
+  { label: "Pores", value: "pores" },
+  { label: "Wrinkles", value: "wrinkles" },
+  { label: "Healthy Skin", value: "normal" }
+]},
     {
       key: "skinType",
       question: "What is your skin type?",
