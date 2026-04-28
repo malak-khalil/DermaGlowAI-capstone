@@ -121,7 +121,10 @@ def build_routine(selected_products, makeup, sunlight_exposure):
 @personalised_products_bp.route("/", methods=["POST"])
 def get_personalised_products():
     data = request.get_json()
-
+    if data.get("skinConcern") == "normal":
+        concern = "normal"
+    else:
+        concern = data.get("skinConcern", "").lower().replace(" ", "_")
     gender = normalize_text(data.get("gender"))
     age_answer = data.get("age")
     primary_concern = normalize_text(data.get("skinConcern"))

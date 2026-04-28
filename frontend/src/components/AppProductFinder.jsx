@@ -27,7 +27,7 @@ export default function AppProductFinder() {
     {
       key: "skinConcern",
       question: "What is your primary Skin Concern?",
-      options: ["Acne", "Blackheads", "Dark Spots", "Pores", "Wrinkles"]
+      options: ["Acne", "Blackheads", "Dark Spots", "Pores", "Wrinkles",{ label: "No specific concerns", value: "normal" }]
     },
     {
       key: "skinType",
@@ -270,15 +270,17 @@ export default function AppProductFinder() {
         <h1 className="finder-question-title">{currentQuestion.question}</h1>
 
         <div className="finder-options-wrap">
-          {currentQuestion.options.map((option) => (
+          {currentQuestion.options.map((option) => {
+            const value = typeof option === "string" ? option : option.value;
+            const label = typeof option === "string" ? option : option.label;
+            return (
             <Button
-              key={option}
+              key={label}
               className="option-buttons finder-option-button"
-              onClick={() => handleAnswerClick(option)}
-            >
-              {option}
-            </Button>
-          ))}
+              onClick={() => handleAnswerClick(value)}
+            >{label}
+            </Button>);
+          })}
         </div>
       </div>
 
