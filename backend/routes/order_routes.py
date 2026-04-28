@@ -1,6 +1,7 @@
 import re
 from flask import Blueprint, jsonify, request, session
 from models import db, Product, Order, OrderItem, User
+from sqlalchemy.exc import OperationalError
 
 orders_bp = Blueprint("orders", __name__, url_prefix="/api/orders")
 
@@ -86,33 +87,46 @@ def checkout():
             "price": line_price,
         })
 
-    order = Order(
-        user_id=user.id,
-        total=total,
-        status="Placed",
-        payment_method=payment_method,
-        payment_status="Paid",
-        address=address,
-    )
-
-    db.session.add(order)
-    db.session.flush()
-
-    for item in order_items:
-        order_item = OrderItem(
-            order_id=order.id,
-            product_id=item["product"].id,
-            quantity=item["quantity"],
-            price=item["price"],
+    try:
+        order = Order(
+            user_id=user.id,
+            total=total,
+            status="Placed",
+            payment_method=payment_method,
+            payment_status="Paid",
+            address=address,
         )
-        db.session.add(order_item)
 
-    db.session.commit()
+        db.session.add(order)
+        db.session.flush()
 
-    return jsonify({
-        "message": "Order placed successfully.",
-        "order": serialize_order(order)
-    }), 201
+        for item in order_items:
+            order_item = OrderItem(
+                order_id=order.id,
+                product_id=item["product"].id,
+                quantity=item["quantity"],
+                price=item["price"],
+            )
+            db.session.add(order_item)
+
+        db.session.commit()
+
+        return jsonify({
+            "message": "Order placed successfully.",
+            "order": serialize_order(order)
+        }), 201
+
+    except OperationalError:
+        db.session.rollback()
+        return jsonify({
+            "error": "Database is locked. Close DB Browser for SQLite and try again."
+        }), 500
+
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({
+            "error": str(e)
+        }), 500
 
 
 @orders_bp.route("/my-orders", methods=["GET"])
