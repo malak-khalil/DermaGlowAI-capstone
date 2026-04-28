@@ -33,7 +33,11 @@ export default function ProductFinderPage() {
   const questions = [
     { key: "gender", question: "What is your gender?", options: ["Male", "Female", "Prefer not to answer"] },
     { key: "age", question: "What is your age?", options: ["Below 20", "20-30", "31-40", "Above 40"] },
-    { key: "skinConcern", question: "What is your primary Skin Concern?", options: ["Acne", "Blackheads", "Dark Spots", "Pores", "Wrinkles"] },
+     { 
+    key: "skinConcern", 
+    question: "What is your primary Skin Concern?", 
+    options: ["Acne", "Blackheads", "Dark Spots", "Pores", "Wrinkles", "Healthy Skin"]
+  },
     { key: "skinType", question: "What is your skin type?", options: ["Oily", "Dry", "Combination", "Normal", "Sensitive"] },
     { key: "sunExposure", question: "How often are you exposed to sunlight?", options: ["Rarely", "Occasionally", "Daily for 1-2 hours", "Daily for 3+ hours"] },
     { key: "makeup", question: "Do you wear makeup regularly?", options: ["Yes, daily", "Occasionally", "No"] }
