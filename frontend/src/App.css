@@ -757,8 +757,9 @@ section {
   min-height: 300px;
 }
 
-.card-body{
-  height: 300px;
+.shop-page-cards .card-body {
+  min-height: 300px;
+  height: auto;
 }
 
 .product-image-wrapper {
@@ -1598,6 +1599,7 @@ section {
   border: 1px solid var(--line);
   background-color: var(--surface);
   box-shadow: var(--shadow-soft);
+  min-height: 620px;
   transition:
     box-shadow 0.38s var(--ease-premium),
     border-color 0.38s ease,
