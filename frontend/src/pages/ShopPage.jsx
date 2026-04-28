@@ -10,7 +10,8 @@ import {
   Button,
   Navbar,
   Card,
-  Modal
+  Modal,
+  Form
 } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { useCart } from "../context/CartContext";
@@ -20,19 +21,19 @@ export default function ShopPage() {
   const { homeCategoryClicked } = useParams();
   const { addToCart, increaseQuantity, decreaseQuantity, getProductQuantity} = useCart();
   const navigate = useNavigate();
+  
 
   const [products, setProducts] = useState([]);
-  const [activeCategory, setActiveCategory] = useState("Cleanser");
+  const [activeCategory, setActiveCategory] = useState("ؤleanser");
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [showSearch, setShowSearch] = useState(false);
 
-  useEffect(() => {
-    if (homeCategoryClicked) {
-      const formattedCategory =
-        homeCategoryClicked.charAt(0).toUpperCase() +
-        homeCategoryClicked.slice(1).toLowerCase();
-      setActiveCategory(formattedCategory);
-    }
-  }, [homeCategoryClicked]);
+ useEffect(() => {
+  if (homeCategoryClicked) {
+    setActiveCategory(homeCategoryClicked.toLowerCase().trim());
+  }
+}, [homeCategoryClicked]);
 
   useEffect(() => {
     fetchProducts();
@@ -55,9 +56,23 @@ export default function ShopPage() {
     products.map((p) => p.category?.toLowerCase().trim()).filter(Boolean)
   )
 ];
-  const filteredProducts = products.filter(
-    (p) => p.category?.toLowerCase().trim() === activeCategory?.toLowerCase().trim()
-  );
+const filteredProducts = products.filter((p) => {
+  const matchesCategory =
+    p.category?.toLowerCase().trim() === activeCategory?.toLowerCase().trim();
+
+  const search = searchTerm.toLowerCase().trim();
+
+  const matchesSearch =
+    !search ||
+    p.name?.toLowerCase().includes(search) ||
+    p.brand?.toLowerCase().includes(search) ||
+    p.skin_concern?.toLowerCase().includes(search) ||
+    p.concern_tags?.toLowerCase().includes(search) ||
+    p.ingredients?.toLowerCase().includes(search) ||
+    p.description?.toLowerCase().includes(search);
+
+  return matchesCategory && matchesSearch;
+});
 
   useEffect(() => {
     if (categories.length > 0 && !categories.includes(activeCategory)) {
@@ -84,6 +99,23 @@ const handleCategoryClick = (category) => {
   }
     addToCart(product);
 };
+useEffect(() => {
+  const handleToggleShopSearch = () => {
+    setShowSearch((prev) => !prev);
+  };
+
+  window.addEventListener("toggleShopSearch", handleToggleShopSearch);
+
+  return () => {
+    window.removeEventListener("toggleShopSearch", handleToggleShopSearch);
+  };
+}, []);
+
+useEffect(() => {
+  if (!showSearch) {
+    setSearchTerm("");
+  }
+}, [showSearch]);
 
   return (
     <>
@@ -102,6 +134,22 @@ const handleCategoryClick = (category) => {
       </Button>
     ))}
   </Navbar>
+{showSearch && (
+  <Form.Control
+    autoFocus
+    type="text"
+    value={searchTerm}
+    onChange={(e) => setSearchTerm(e.target.value)}
+    placeholder="Search by product, brand, concern, or ingredient..."
+    className="mt-3 mb-4"
+    style={{
+      maxWidth: "520px",
+      margin: "0 auto",
+      borderRadius: "16px",
+      padding: "0.8rem 1rem"
+    }}
+  />
+)}
 </RevealOnScroll>
 
 <RevealOnScroll delay={120}>

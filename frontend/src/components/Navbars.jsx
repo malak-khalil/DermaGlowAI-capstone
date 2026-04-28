@@ -1,5 +1,5 @@
 import { Navbar, Container, Nav } from "react-bootstrap";
-import React, {useState} from "react";
+import React from "react";
 import { useLocation,useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import { useAuth } from "../context/AuthContext";
@@ -9,6 +9,8 @@ function AppNavbar() {
   const { cart } = useCart();
   const { user } = useAuth();
   const location = useLocation();
+  const isShopPage = location.pathname.startsWith("/shop");
+  
 
 const goTo = (path, options) => {
   if (location.pathname === path && !options) {
@@ -41,7 +43,29 @@ const goTo = (path, options) => {
             </Navbar.Brand>
 
             <Nav className="icon-nav">
-              <Nav.Link
+              {isShopPage && (
+  <button
+    type="button"
+    onClick={() => window.dispatchEvent(new Event("toggleShopSearch"))}
+    aria-label="Toggle shop search"
+    title="Search products"
+    style={{
+      border: "none",
+      background: "transparent",
+      padding: "6px 10px",
+      cursor: "pointer",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center"
+    }}
+  >
+    <img
+      src="/images/search-icon.png"
+      alt="Search"
+      className="user-icon"
+    />
+  </button>
+)}  <Nav.Link
                 onClick={() => goTo(user ? "/user-profile" : "/auth")}
               >
                 <img
