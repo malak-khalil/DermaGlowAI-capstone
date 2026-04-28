@@ -131,6 +131,8 @@ def get_personalised_products():
     if primary_concern == "normal":
         primary_concern = "normal"
     skin_type = normalize_text(data.get("skinType"))
+    if primary_concern == "healthy skin":
+        primary_concern = "normal"
     sunlight_exposure = normalize_text(data.get("sunExposure"))
     makeup = normalize_text(data.get("makeup"))
 
@@ -166,8 +168,12 @@ def get_personalised_products():
             get_product_field(product, "ingredients", "ingredient_list")
         )
 
-        if product_concern == primary_concern:
-            score += 10
+        if primary_concern in ["healthy skin", "normal"]:
+            if product_concern in ["", "normal", None]:
+                score += 10
+            else:
+                if product_concern == primary_concern:
+                    score += 10
 
         if primary_concern in product_tags:
             score += 6

@@ -3,14 +3,14 @@ import "../App.css";
 
 import React, { useState } from "react";
 import { useCart } from "../context/CartContext";
-import { Container, Card, Button, Spinner, Col, Row } from "react-bootstrap";
+import { Container, Card, Button, Spinner, Col, Row, Modal } from "react-bootstrap";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate, useLocation } from "react-router-dom";
 import RevealOnScroll from "../components/RevealOnScroll";
 
 export default function ProductFinderPage() {
   const { addToCart, increaseQuantity, decreaseQuantity, getProductQuantity } = useCart();
-
+  const [selectedProduct, setSelectedProduct] = useState(null);
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState({
     gender: "",
@@ -164,9 +164,9 @@ export default function ProductFinderPage() {
 
                   return (
                     <Col key={product.id}>
-                      <Card className="shop-page-cards">
+                      <Card className="shop-page-cards" onClick={() => setSelectedProduct(product)} style={{ cursor: "pointer" }}>
                         <Card.Body>
-                          <Card.Title>{product.skin_concern}</Card.Title>
+        
 
                           <div className="product-image-wrapper">
                             <Card.Img
@@ -177,19 +177,18 @@ export default function ProductFinderPage() {
                           </div>
 
                           <Card.Subtitle>{product.name}</Card.Subtitle>
-                          <Card.Text>{product.description}</Card.Text>
                           <Card.Title>${Number(product.price).toFixed(2)}</Card.Title>
 
                           {quantity === 0 ? (
                             <Button
                               className="shop-page-buttons"
                               size="lg"
-                              onClick={() => handleProtectedAddToCart(product)}
+                              onClick={(e) => { e.stopPropagation(); handleProtectedAddToCart(product);}}
                             >
                               Add to Cart
                             </Button>
                           ) : (
-                            <div className="quantity-controls">
+                            <div className="quantity-controls"  onClick={(e) => e.stopPropagation()}>
                               <Button
                                 className="qty-btn"
                                 onClick={() => decreaseQuantity(product.id)}
@@ -271,6 +270,33 @@ export default function ProductFinderPage() {
   </>
 )}
       </Container>
+      <Modal
+  show={!!selectedProduct}
+  onHide={() => setSelectedProduct(null)}
+  centered
+>
+  <Modal.Header closeButton>
+    <Modal.Title>{selectedProduct?.name}</Modal.Title>
+  </Modal.Header>
+
+  <Modal.Body>
+    {selectedProduct && (
+      <>
+        <div className="product-image-wrapper">
+          <img
+            src={selectedProduct.image}
+            alt={selectedProduct.name}
+            className="product-image"
+          />
+        </div>
+
+        <p><strong>Category:</strong> {selectedProduct.category}</p>
+        <p><strong>Description:</strong> {selectedProduct.description}</p>
+        <p><strong>Price:</strong> ${Number(selectedProduct.price).toFixed(2)}</p>
+      </>
+    )}
+  </Modal.Body>
+</Modal>
     </main>
   );
 }

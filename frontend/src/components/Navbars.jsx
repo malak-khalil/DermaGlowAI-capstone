@@ -87,7 +87,7 @@ const goTo = (path, options) => {
               <Nav className="third-navbar-links ms-auto me-auto">
                 <Nav.Link onClick={() => goTo("/")}>Home</Nav.Link>
                 <Nav.Link onClick={() => goTo("/shop")}>Shop</Nav.Link>
-                <Nav.Link onClick={() => goTo("/product-finder")}>Product Finder</Nav.Link>
+                <Nav.Link onClick={() => goTo("/product-finder")}>Routine Assistant</Nav.Link>
                 <Nav.Link onClick={() => goTo("/ai-analysis")}>AI Skin Analysis</Nav.Link>
                 <Nav.Link onClick={() => goTo("/reviews")}>Reviews</Nav.Link>
               </Nav>

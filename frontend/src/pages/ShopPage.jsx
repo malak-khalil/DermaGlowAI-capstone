@@ -50,7 +50,11 @@ export default function ShopPage() {
     }
   };
 
-  const categories = [...new Set(products.map((p) => p.category).filter(Boolean))];
+  const categories = [
+  ...new Set(
+    products.map((p) => p.category?.toLowerCase().trim()).filter(Boolean)
+  )
+];
   const filteredProducts = products.filter(
     (p) => p.category?.toLowerCase().trim() === activeCategory?.toLowerCase().trim()
   );
@@ -178,7 +182,6 @@ const handleCategoryClick = (category) => {
         </div>
 
         <p><strong>Category:</strong> {selectedProduct.category}</p>
-        <p><strong>Concern:</strong> {selectedProduct.skin_concern}</p>
         <p><strong>Description:</strong> {selectedProduct.description}</p>
         <p><strong>Price:</strong> ${Number(selectedProduct.price).toFixed(2)}</p>
       </>

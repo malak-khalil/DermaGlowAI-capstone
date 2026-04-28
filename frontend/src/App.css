@@ -754,7 +754,11 @@ section {
   gap: 10px;
   padding: 1rem 1rem 0.95rem;
   text-align: center;
-  min-height: 360px;
+  min-height: 300px;
+}
+
+.card-body{
+  height: 300px;
 }
 
 .product-image-wrapper {
